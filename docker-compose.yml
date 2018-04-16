@@ -1,0 +1,29 @@
+version: '2'
+services:
+   db:
+      image: mariadb
+      ports:
+        - "3307:3306"
+      restart: always
+      volumes:
+        - dbvolume:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=toor
+   webserver:
+     image: kompots/ltc
+     # build: .
+     volumes:
+       - ./webroot:/var/www/html
+       - ./sites-enabled:/etc/nginx/sites-enabled
+       - ./certs:/etc/ssl/private
+     command: /root/startup.sh
+     # restart: on-failure
+     environment:
+        - XDEBUG_REMOTE_HOST=0.0.0.0
+     ports:
+       - "8080:80"
+       - "444:443"
+     depends_on:
+        - db
+volumes:
+  dbvolume:
