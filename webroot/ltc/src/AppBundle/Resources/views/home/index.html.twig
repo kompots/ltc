@@ -1,0 +1,58 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="py-5 text-center">
+            {% image 'bundles/app/images/ltc-logo.svg' %}
+                <img class="d-block mx-auto mb-4" src="{{ asset_url }}" alt="Lattelecom" width="300px"/>
+            {% endimage %}
+            <hr>
+            {% block userblock %}
+                {% if is_granted("ROLE_USER") %}
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            Labas ritas & labas vakaras, {{ app.user.username }} ({{ app.user.email }})<br>
+                            <a href="{{ path('logout') }}">Doties atpakaļ pie svarīgākiem darbiem</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="exchangeTable" class="display" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Position</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Position</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('#exchangeTable').DataTable({
+                "searching": false,
+                "processing": true,
+                "serverSide": true,
+                "pageLength": 10,
+                "ajax": "{{ path('exchange_api') }}"
+            });
+        });
+    </script>
+{% endblock %}

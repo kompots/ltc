@@ -1,0 +1,30 @@
+index:
+  path: /
+  defaults: { _controller: AppBundle:Default:helloWorld }
+  schemes:    [https]
+app:
+  path: /app
+  defaults: { _controller: AppBundle:Default:index }
+  schemes:    [https]
+exchange_api:
+  path: /api/exchange
+  defaults: { _controller: AppBundle:Exchange:fetchData }
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix:   /connect
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+login:
+    path:   /login
+google_login:
+    path: /login/check-google
+facebook_login:
+    path: /login/check-facebook
+logout:
+    path: /logout

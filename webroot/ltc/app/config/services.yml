@@ -1,0 +1,18 @@
+services:
+  index_controller:
+    class: AppBundle\Controller\DefaultController
+    arguments: ['@service_container']
+  social_auth_controller:
+      namespace: AppBundle\Controller\
+      resource: AuthenticationController
+      class: AuthenticationController
+      arguments: ['@service_container']
+  my.oauth_aware.user_provider.service:
+      class: AppBundle\Services\FOSUBUserProvider
+      arguments: [@fos_user.user_manager,{facebook: facebook_id, google: google_id}]
+  console_exchange_rss:
+      class: AppBundle\Services\ExchangeRateService
+      arguments: ['@doctrine.orm.entity_manager']
+  api_controller:
+      class: AppBundle\Controller\ExchangeController
+      arguments: ['@service_container']

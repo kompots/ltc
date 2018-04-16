@@ -1,0 +1,31 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+            secured_area:
+                anonymous: ~
+                logout: ~
+                oauth:
+                    resource_owners:
+                        google:             "/login/check-google"
+                        facebook:          "/login/check-facebook"
+                    login_path:        /login
+                    use_forward:       false
+                    failure_path:      /login
+
+                    oauth_user_provider:
+                        service: my.oauth_aware.user_provider.service
+
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/app, roles: ROLE_USER }
