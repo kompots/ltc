@@ -1,0 +1,10 @@
+{% extends '@HWIOAuth/layout.html.twig' %}
+
+{% block hwi_oauth_content %}
+    <p class="text-center">
+    <h3>Nu labu tad Tev to dieniņu {{ app.user.username }}</h3>
+    Prieks kad izdevās tikt tik talu, vairs tikai bez automātiska redirect Tev jadodas uz applikācijas lapu
+    <hr>
+    <a href="{{ path('index') }}"> <button class="btn btn-danger btn-lg btn-block">Applikācija</button></a>
+    </p>
+{% endblock hwi_oauth_content %}
