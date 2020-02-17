@@ -1,4 +1,4 @@
-###Project settup setp by step
+### Project settup setp by step
 
 1. Head to https://github.com/kompots/ltc and check out project with git clone https://github.com/kompots/ltc.git;
 2. From project root directory enter image-builder folder and execute "docker build -t ltc ." 
