@@ -1,8 +1,9 @@
 ---
-name: Test
-route: /test
-path: /test
+title: My First Post
+date: 2019-07-10
+path: /my-first-post
 ---
+This is my first Gatsby post written in Markdown!
 
 # Project settup setp by step
 
