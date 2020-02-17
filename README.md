@@ -1,7 +1,7 @@
 ---
 title: My First Post
 date: 2019-07-10
-path: /my-first-post
+path: /kompots-git
 menu: DevOps
 ---
 This is my first Gatsby post written in Markdown!
