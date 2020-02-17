@@ -1,6 +1,7 @@
 ---
 name: Test
 route: /test
+path: /test
 ---
 
 # Project settup setp by step
